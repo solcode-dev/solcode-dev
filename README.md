@@ -1,4 +1,21 @@
-# 시스템의 내부 동작 원리를 이해하는 개발자
+이 저장소는 포트폴리오용 통합 저장소입니다.<Br/> 운영체제 구현과 자료구조 학습 내역을 한 곳에서 확인할 수 있도록 구성했습니다.
+
+## 📂 저장소 구조
+
+이 저장소는 두 개의 독립 프로젝트를 Git Subtree로 통합했습니다:
+```bash
+solcode-dev/ 
+├── pintos/ # 운영체제 구현 프로젝트 
+    └── 원본: github.com/solcode-dev/pintos-jungle-log 
+└── data-structure-study/ # 자료구조 학습 프로젝트 
+    └── 원본: github.com/solcode-dev/datastructure-study-log
+```
+💡 각 프로젝트는 독립적으로 개발/관리되며, 이 저장소에서 통합 버전을 확인할 수 있습니다.
+
+---
+
+
+## 시스템의 내부 동작 원리를 이해하는 개발자
 
 > **"왜 그렇게 동작하는가?"를 질문하고, 직접 구현하며 답을 찾습니다**
 
@@ -9,7 +26,7 @@ C로 운영체제 내부를 구현하고, 알고리즘 문제를 풀며, 성능 
 
 ## 🖥️ Pintos - Priority Scheduling System
 
-**📌 [github.com/solcode-dev/pintos-jungle-log](https://github.com/solcode-dev/pintos-jungle-log)**
+**📁 [/pintos](/pintos)** | **📌 원본 저장소: [pintos-jungle-log](https://github.com/solcode-dev/pintos-jungle-log)**
 
 교육용 운영체제 Pintos에서 우선순위 기반 스케줄링과 동기화 메커니즘을 구현했습니다.
 
@@ -25,32 +42,26 @@ C로 운영체제 내부를 구현하고, 알고리즘 문제를 풀며, 성능 
 - 해결: 지연 정렬 기법 도입 (삽입은 O(1), 깨울 때만 정렬)
 - 결과: 전체 스케줄링 효율 30% 개선
 
-### 구현 핵심
-```c
-void donate_priority(struct thread *t, int priority) {
-    t->priority = priority;
-    if (t->waiting_lock != NULL) {
-        donate_priority(t->waiting_lock->holder, priority);
-    }
-}
-```
-
-`C` `Linux` `Operating System` `Concurrency`
+`C` `Linux` `Operating System` `Concurrency` `Priority Scheduling`
 
 ---
 
 ## 📚 Data Structure Study
 
-**📌 [github.com/solcode-dev/datastructure-study-log](https://github.com/solcode-dev/datastructure-study-log)**
+**📁 [/data-structure-study](/data-structure-study/) | 📌 원본 저장소: [datastructure-study-log](https://github.com/solcode-dev/datastructure-study-log)**
 
-자료구조를 C로 직접 구현하며 시간/공간 복잡도를 분석하고, 백준 문제로 이해도와 적용력을 검증합니다.
+자료구조를 C로 직접 구현하며 시간/공간 복잡도를 분석했습니다.
+학습 후에는 백준 문제로 이해도와 적용력을 확인했습니다.
 
-- Array, Linked List, Stack, Queue, Hash Table
-- Binary Tree, BST, AVL Tree, Red-Black Tree
-- Graph (DFS, BFS, 최단 경로)
-- Heap, Trie, Union-Find
+### 구현한 자료 구조
+- 탐색: 이진 탐색, 순차 탐색
+- 그래프 탐색: BFS, DFS
+- 최단 경로: 다익스트라, A* 알고리즘
+- 최소 신장 트리: Kruskal, Prim, 개선된 Prim
 
-96문제 해결 (Baekjoon)
+### 학습 성과
+✅ 백준 96문제 해결 (Python 사용)
+🔍 실제 문제 적용을 통한 활용 능력 검증
 
 `C` `Python` `Data Structure` `Algorithm`
 
@@ -70,7 +81,7 @@ void donate_priority(struct thread *t, int priority) {
 
 **Languages**: C, Python  
 **System**: Linux, Git  
-**Learning**: Operating System, Network Programming, Database Internals
+**Learning**: Operating System, Network Programming
 
 ---
 
